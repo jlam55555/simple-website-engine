@@ -1,0 +1,28 @@
+{
+  "": {
+    "template": "templates/index.html"
+  },
+  "blog": {
+    "template": "templates/blog-index.html",
+    "subpages": {
+      "first-blog-post": {
+        "template": "templates/blog-post.html",
+        "params": {
+          "title": "My first blog post",
+          "src": "/templates/blog/first-blog-post.html"
+        }
+      },
+      "second-blog-post": {
+        "template": "templates/blog-post.html",
+        "params": {
+          "title": "My second blog post",
+          "src": "/templates/blog/second-blog-post.html"
+        }
+      }
+    }
+  },
+  "faq": {
+    "template": "templates/faq.html",
+    "data": "data/faq.json"
+  }
+}

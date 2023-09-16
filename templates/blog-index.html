@@ -3,8 +3,10 @@
   <ul id="blog-list"></ul>
   <script defer>
     const blog_list = document.getElementById("blog-list");
-    for (const blog_entry of _data) {
-        blog_list.innerHTML += `<li><a href="/blog/${blog_entry.path}">${blog_entry.title}</a></li>`;
+    const blog_entries = Object.entries(_skeleton.blog.subpages);
+    // Probably want to sort blog_entries here.
+    for (const [path, blog_entry] of blog_entries) {
+        blog_list.innerHTML += `<li><a href="/blog/${path}">${blog_entry.params.title}</a></li>`;
     }
   </script>
 </template-include>

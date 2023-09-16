@@ -7,32 +7,38 @@ This wasn't well-thought out, it was more like a midnight project.
 Creating the website is very simple. Design the page map using a page skeleton, and then define a set of simple HTML templates.
 
 ##### Skeleton
-Design the layout of your website using yaml. Each node contains a path, a template, an optional JSON file of data (to populate the template), and an optional set of subpages.
+Design the layout of your website using yaml. The key for each page is a path; each page contains a template, an optional JSON file of data (to populate the template), and an optional set of subpages.
 
-skeleton.yml:
-```yaml
-# This is a comment.
-
-- path:
-  template: templates/index.html
-  data: data/index.json
-- path: blog
-  template: templates/blog-index.html
-  data: data/blogposts.json
-  subpages:
-  - path: first-blog-post
-    template: templates/blog-post.html
-    params:
-      title: My first blog post
-      src: templates/blog/first-blog-post.html
-  - path: second-blog-post
-    template: templates/blog-post.html
-    params:
-      title: My second blog post
-      src: templates/blog/second-blog-post.html
-- path: faq
-  template: templates/faq.html
-  data: data/faq.json
+skeleton.json:
+```json
+{
+  "": {
+    "template": "templates/index.html"
+  },
+  "blog": {
+    "template": "templates/blog-index.html",
+    "subpages": {
+      "first-blog-post": {
+        "template": "templates/blog-post.html",
+        "params": {
+          "title": "My first blog post",
+          "src": "/templates/blog/first-blog-post.html"
+        }
+      },
+      "second-blog-post": {
+        "template": "templates/blog-post.html",
+        "params": {
+          "title": "My second blog post",
+          "src": "/templates/blog/second-blog-post.html"
+        }
+      }
+    }
+  },
+  "faq": {
+    "template": "templates/faq.html",
+    "data": "data/faq.json"
+  }
+}
 ```
 
 ##### Templates
@@ -69,9 +75,8 @@ and the `templates/basic-template-layout.html` template looks like this:
 ```
 
 ### Running the webserver
-You will need to set up a Python venv with `pyyaml`.
 ```sh
-$ ./compile.py
+$ python compile.py
 ```
 
 To view the webpage:

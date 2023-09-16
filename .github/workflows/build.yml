@@ -8,7 +8,6 @@ jobs:
       - uses: actions/setup-python@v4 
         with:
           python-version: 'pypy3.9' 
-      - run: pip install -r requirements.txt
       - run: python compile.py
       - uses: actions/upload-pages-artifact@v1
         with:
