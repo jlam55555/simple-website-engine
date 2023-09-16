@@ -79,3 +79,8 @@ To view the webpage:
 $ python -m http.server --directory out 8888
 ```
 Then go to `localhost:8888` in your browser.
+
+### Deployment
+This is configured to build and deploy using GitHub pages.
+
+Note that absolute paths are iffy when served as a project page (subdirectory of a domain) on GitHub pages (e.g., in the demo page). I don't know of a good way to fix this up, so beware.
