@@ -1,0 +1,28 @@
+name: Build website
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4 
+        with:
+          python-version: 'pypy3.9' 
+      - run: pip install -r requirements.txt
+      - run: python compile.py
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: ${{ github.workspace }}/out
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
