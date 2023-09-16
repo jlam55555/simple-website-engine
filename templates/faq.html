@@ -1,0 +1,10 @@
+<template-include src="./basic-template-layout.html" param-title="FAQ">
+  <h1>This is the FAQ page</h1>
+  <ul id="faq-list"></ul>
+  <script defer>
+    const faq_list = document.getElementById("faq-list");
+    for (const faq_entry of _data) {
+        faq_list.innerHTML += `<li><strong>Q: ${faq_entry.q}</strong> A: ${faq_entry.a}</li>`;
+    }
+  </script>
+</template-include>

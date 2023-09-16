@@ -1,0 +1,19 @@
+- path: ""
+  template: /templates/index.html
+- path: blog
+  template: /templates/blog-index.html
+  data: data/blogposts.json
+  subpages:
+  - path: first-blog-post
+    template: /templates/blog-post.html
+    params:
+      title: My first blog post
+      src: /templates/blog/first-blog-post.html
+  - path: second-blog-post
+    template: /templates/blog-post.html
+    params:
+      title: My second blog post
+      src: /templates/blog/second-blog-post.html
+- path: faq
+  template: /templates/faq.html
+  data: /data/faq.json
